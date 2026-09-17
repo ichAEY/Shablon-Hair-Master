@@ -1152,7 +1152,7 @@ export default function MobileClayTone() {
               <div className="mct-review-set" key={setIndex} aria-hidden={setIndex !== 2}>
                 {reviews.map((review) => (
                   <a
-                    className="mct-review-card"
+                    className={`mct-review-card${review.text.length > 240 ? " is-long" : ""}`}
                     href={reviewsUrl}
                     target="_blank"
                     rel="noopener noreferrer"

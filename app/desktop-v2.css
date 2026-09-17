@@ -1,0 +1,922 @@
+/*
+ * TANEM Hair Template — desktop v2.
+ * Owner-approved refinement of the shared hair-master template.
+ * The mobile composition is intentionally untouched: every rule begins at 1024px.
+ */
+
+@media (min-width: 1024px) {
+  /* Header and hero ------------------------------------------------------- */
+  .mct-brand-yulia-image {
+    width: 82px !important;
+    height: 70px !important;
+    flex: 0 0 82px !important;
+    overflow: visible !important;
+  }
+
+  .mct-brand-yulia-image img {
+    width: 70px !important;
+    height: 70px !important;
+    max-width: 70px !important;
+    max-height: 70px !important;
+    object-fit: contain !important;
+    object-position: left center !important;
+  }
+
+  .mct-hero {
+    height: max(760px, 100svh) !important;
+    min-height: 760px !important;
+    max-height: none !important;
+  }
+
+  .mct-hero > .mct-shell {
+    position: relative !important;
+    min-height: 100% !important;
+  }
+
+  .mct-hero-visual {
+    position: absolute !important;
+    z-index: 1 !important;
+    inset: 0 0 0 auto !important;
+    width: 50vw !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .dct-hero-portrait {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  .dct-hero-portrait img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center 30% !important;
+  }
+
+  .mct-hero-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 16px !important;
+    flex-wrap: nowrap !important;
+  }
+
+  .mct-main-cta {
+    width: clamp(220px, 19.7vw, 270px) !important;
+    min-width: 0 !important;
+    min-height: 64px !important;
+    flex: 0 0 auto !important;
+  }
+
+  .mct-quiet-link {
+    display: inline-flex !important;
+    width: clamp(150px, 13.4vw, 184px) !important;
+    min-height: 64px !important;
+    flex: 0 0 auto !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    padding: 0 19px !important;
+    border: 1px solid rgba(94, 70, 62, .14) !important;
+    border-radius: 999px !important;
+    background: rgba(255, 253, 250, .72) !important;
+    color: #443d39 !important;
+    box-shadow: 0 10px 28px rgba(70, 51, 44, .055) !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    transition: transform 220ms ease, background 220ms ease, border-color 220ms ease, box-shadow 220ms ease !important;
+  }
+
+  .mct-quiet-link:hover,
+  .mct-quiet-link:focus-visible {
+    border-color: rgba(111, 81, 72, .25) !important;
+    background: #fffdfa !important;
+    box-shadow: 0 15px 34px rgba(70, 51, 44, .09) !important;
+    transform: translateY(-2px) !important;
+  }
+
+  /* Portfolio ------------------------------------------------------------- */
+  #mobile-portfolio {
+    padding: 94px 0 98px !important;
+    background:
+      radial-gradient(circle at 88% 10%, rgba(205, 174, 162, .12), transparent 31%),
+      #f4ebe5 !important;
+  }
+
+  #mobile-portfolio .mct-section-head {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  #mobile-portfolio .mct-section-head > div {
+    display: grid !important;
+    justify-items: center !important;
+  }
+
+  #mobile-portfolio .mct-section-head h2 {
+    margin-top: 10px !important;
+  }
+
+  #mobile-portfolio .dct-film-strip {
+    display: none !important;
+  }
+
+  #mobile-portfolio .mct-work-grid {
+    display: grid !important;
+    width: 100% !important;
+    height: clamp(480px, 45vw, 620px) !important;
+    grid-template-columns: minmax(0, 1.12fr) repeat(2, minmax(0, .88fr)) !important;
+    grid-template-rows: repeat(2, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+    margin: 42px 0 0 !important;
+  }
+
+  #mobile-portfolio .mct-work-tile {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    border: 1px solid rgba(255, 255, 255, .78) !important;
+    border-radius: 24px !important;
+    background: #ddd1ca !important;
+    box-shadow: 0 14px 36px rgba(69, 50, 43, .085) !important;
+    cursor: zoom-in !important;
+  }
+
+  #mobile-portfolio .mct-work-tile:nth-child(1) {
+    grid-column: 1 !important;
+    grid-row: 1 / 3 !important;
+  }
+
+  #mobile-portfolio .mct-work-tile:nth-child(2) {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+  }
+
+  #mobile-portfolio .mct-work-tile:nth-child(3) {
+    grid-column: 3 !important;
+    grid-row: 1 !important;
+  }
+
+  #mobile-portfolio .mct-work-tile:nth-child(4) {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+  }
+
+  #mobile-portfolio .mct-work-tile:nth-child(5) {
+    grid-column: 3 !important;
+    grid-row: 2 !important;
+  }
+
+  #mobile-portfolio .mct-work-tile img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transition: transform 350ms cubic-bezier(.22, .78, .25, 1), filter 350ms ease !important;
+  }
+
+  #mobile-portfolio .mct-work-tile:hover img,
+  #mobile-portfolio .mct-work-tile:focus-visible img {
+    filter: saturate(1.02) contrast(1.01) !important;
+    transform: scale(1.025) !important;
+  }
+
+  #mobile-portfolio .mct-gallery-button {
+    width: 330px !important;
+    min-height: 62px !important;
+    margin: 24px auto 0 !important;
+    background: rgba(255, 253, 250, .78) !important;
+  }
+
+  /* Services -------------------------------------------------------------- */
+  .mct-prices {
+    overflow: hidden !important;
+    padding: 96px 0 104px !important;
+    background:
+      radial-gradient(circle at 9% 4%, rgba(204, 171, 158, .15), transparent 29%),
+      radial-gradient(circle at 92% 83%, rgba(218, 195, 184, .12), transparent 31%),
+      #f8f4ef !important;
+  }
+
+  .mct-prices > .mct-shell {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0 !important;
+  }
+
+  .mct-price-head {
+    position: static !important;
+    display: grid !important;
+    grid-template-columns: minmax(360px, .95fr) minmax(360px, 1.05fr) !important;
+    align-items: end !important;
+    column-gap: clamp(54px, 7vw, 110px) !important;
+  }
+
+  .mct-price-head .mct-section-kicker {
+    grid-column: 1 / -1 !important;
+  }
+
+  .mct-price-head h2 {
+    grid-column: 1 !important;
+    margin: 12px 0 0 !important;
+    line-height: .9 !important;
+  }
+
+  .mct-price-head h2 br {
+    display: none !important;
+  }
+
+  .mct-price-head > span {
+    grid-column: 2 !important;
+    max-width: 540px !important;
+    margin: 0 0 6px !important;
+    color: #625b57 !important;
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+  }
+
+  .mct-tabs-ribbon-wrap {
+    grid-column: 1 !important;
+    width: 100% !important;
+    margin-top: 38px !important;
+  }
+
+  .mct-tabs {
+    grid-column: 1 !important;
+    width: 100% !important;
+    max-width: none !important;
+    padding: 5px !important;
+    border: 1px solid rgba(83, 63, 55, .09) !important;
+    background: rgba(229, 216, 208, .58) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .62) !important;
+  }
+
+  .mct-tabs-track {
+    gap: 5px !important;
+  }
+
+  .mct-tabs-scroll .mct-tab {
+    min-height: 50px !important;
+    font-size: 12px !important;
+  }
+
+  .mct-service-list {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    align-items: start !important;
+    gap: 16px !important;
+    margin-top: 22px !important;
+    border: 0 !important;
+  }
+
+  .mct-service-row.yulia-price-row,
+  .mct-service-row.yulia-price-row.has-variants,
+  .mct-service-row.yulia-price-row.stl-grouped-service {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    min-height: 172px !important;
+    margin: 0 !important;
+    padding: 26px 76px 24px 26px !important;
+    overflow: hidden !important;
+    border: 1px solid rgba(79, 60, 53, .105) !important;
+    border-radius: 22px !important;
+    background: rgba(255, 253, 250, .78) !important;
+    box-shadow: 0 11px 28px rgba(68, 50, 43, .055) !important;
+    text-decoration: none !important;
+    transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease, background 220ms ease !important;
+  }
+
+  .mct-service-row.yulia-price-row:hover,
+  .mct-service-row.yulia-price-row:focus-visible {
+    border-color: rgba(117, 82, 72, .23) !important;
+    background: #fffdf9 !important;
+    box-shadow: 0 17px 38px rgba(68, 50, 43, .09) !important;
+    transform: translateY(-3px) !important;
+  }
+
+  .mct-service-row.yulia-price-row::after {
+    position: absolute !important;
+    top: 22px !important;
+    right: 20px !important;
+    display: grid !important;
+    width: 42px !important;
+    height: 42px !important;
+    place-items: center !important;
+    border: 1px solid rgba(112, 81, 71, .16) !important;
+    border-radius: 50% !important;
+    background: #eee3dd !important;
+    color: #6d514a !important;
+    content: "\2197" !important;
+    font: 500 16px/1 "Manrope", Arial, sans-serif !important;
+    transition: background 220ms ease, color 220ms ease, transform 220ms ease !important;
+  }
+
+  .mct-service-row.yulia-price-row:hover::after,
+  .mct-service-row.yulia-price-row:focus-visible::after {
+    background: #7f5d59 !important;
+    color: #fff !important;
+    transform: translate(2px, -2px) !important;
+  }
+
+  .mct-service-row.yulia-price-row.has-group-label {
+    margin: 0 !important;
+    padding-top: 26px !important;
+  }
+
+  .mct-service-group-label {
+    display: inline-flex !important;
+    width: auto !important;
+    min-height: 28px !important;
+    align-items: center !important;
+    gap: 0 !important;
+    margin: 0 0 18px !important;
+    padding: 0 11px !important;
+    border-radius: 999px !important;
+    background: #eee3dd !important;
+    color: #765d54 !important;
+    font-size: 9px !important;
+    letter-spacing: .13em !important;
+  }
+
+  .mct-service-group-label::after {
+    display: none !important;
+  }
+
+  .yulia-service-head,
+  .yulia-price-row.has-variants .yulia-service-head {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    align-items: start !important;
+    gap: 20px !important;
+  }
+
+  .yulia-service-title {
+    padding-right: 4px !important;
+    color: #2a2523 !important;
+    font-size: clamp(23px, 1.8vw, 29px) !important;
+    line-height: 1.08 !important;
+  }
+
+  .yulia-service-price {
+    width: auto !important;
+    padding-top: 2px !important;
+    color: #3b3431 !important;
+    font-size: 21px !important;
+    text-align: right !important;
+  }
+
+  .yulia-service-description,
+  .yulia-contouring-detail {
+    max-width: none !important;
+    margin-top: 12px !important;
+    color: #716964 !important;
+    font-size: 11.5px !important;
+    line-height: 1.55 !important;
+  }
+
+  .yulia-service-time {
+    display: inline-flex !important;
+    min-height: 30px !important;
+    align-items: center !important;
+    gap: 7px !important;
+    margin-top: 15px !important;
+    padding: 0 11px !important;
+    border-radius: 999px !important;
+    background: #f0e7e1 !important;
+    color: #746760 !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+  }
+
+  .yulia-service-time::before {
+    content: "\25F7" !important;
+    color: #8d6d63 !important;
+    font-size: 14px !important;
+    line-height: 1 !important;
+  }
+
+  .yulia-service-variants {
+    display: grid !important;
+    width: 100% !important;
+    max-width: none !important;
+    gap: 0 !important;
+    margin-top: 18px !important;
+    border-top: 1px solid rgba(69, 53, 47, .1) !important;
+  }
+
+  .yulia-service-variant {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    align-items: center !important;
+    gap: 18px !important;
+    padding: 11px 0 !important;
+    border-bottom: 1px solid rgba(69, 53, 47, .075) !important;
+  }
+
+  .yulia-service-variant > span {
+    color: #5f5752 !important;
+    font-size: 11px !important;
+  }
+
+  .yulia-service-variant > span small {
+    display: inline-flex !important;
+    align-items: center !important;
+    margin-left: 8px !important;
+    color: #8f8179 !important;
+    font-size: 9px !important;
+  }
+
+  .yulia-service-variant > span small::before {
+    margin-right: 4px !important;
+    color: #9a776d !important;
+    content: "\25F7" !important;
+    font-size: 11px !important;
+  }
+
+  .yulia-service-variant > b {
+    width: auto !important;
+    color: #352f2c !important;
+    font-size: 17px !important;
+    text-align: right !important;
+  }
+
+  .mct-more-services {
+    grid-column: 1 !important;
+    width: min(100%, 390px) !important;
+    min-height: 54px !important;
+    margin-top: 26px !important;
+    background: rgba(238, 227, 221, .85) !important;
+    font-size: 12px !important;
+  }
+
+  /* About ----------------------------------------------------------------- */
+  .mct-about {
+    padding: 84px 0 88px !important;
+    background:
+      radial-gradient(circle at 88% 18%, rgba(193, 158, 145, .13), transparent 31%),
+      linear-gradient(180deg, #f8f3ef 0%, #f4ebe5 100%) !important;
+  }
+
+  .mct-about-head {
+    align-items: end !important;
+  }
+
+  .mct-about-card {
+    grid-template-columns: minmax(360px, .84fr) minmax(500px, 1.16fr) !important;
+    min-height: 0 !important;
+    margin-top: 28px !important;
+    border-radius: 28px !important;
+    background: rgba(255, 253, 250, .8) !important;
+    box-shadow: 0 18px 48px rgba(67, 50, 44, .075) !important;
+  }
+
+  .mct-about-portrait-wrap {
+    min-height: 540px !important;
+  }
+
+  .mct-about-portrait img {
+    object-position: center 20% !important;
+  }
+
+  .mct-about-experience {
+    right: 18px !important;
+    bottom: 18px !important;
+    min-width: 126px !important;
+    min-height: 62px !important;
+    padding: 9px 15px !important;
+  }
+
+  .mct-about-experience strong {
+    font-size: 38px !important;
+  }
+
+  .mct-about-copy {
+    justify-content: center !important;
+    padding: clamp(36px, 4vw, 58px) !important;
+  }
+
+  .mct-about-copy > .mct-about-lead {
+    font-size: clamp(30px, 2.5vw, 38px) !important;
+    line-height: 1.15 !important;
+  }
+
+  .mct-about-copy > p {
+    font-size: 14px !important;
+    line-height: 1.62 !important;
+  }
+
+  .mct-about-copy > p + p {
+    padding-top: 15px !important;
+  }
+
+  .mct-about-list {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 9px !important;
+    margin: 24px 0 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+  }
+
+  .mct-about-list li {
+    display: flex !important;
+    min-height: 52px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 9px 10px !important;
+    border: 1px solid rgba(85, 64, 57, .1) !important;
+    border-radius: 15px !important;
+    background: #f4ebe5 !important;
+    color: #554b47 !important;
+    font-size: 10.5px !important;
+    line-height: 1.35 !important;
+    text-align: center !important;
+  }
+
+  .mct-about-list li::before {
+    display: none !important;
+  }
+
+  .mct-amenities {
+    margin-top: 20px !important;
+    padding: 18px 26px 19px !important;
+    border-radius: 20px !important;
+    background: rgba(255, 253, 250, .62) !important;
+  }
+
+  .mct-amenities-head {
+    padding-bottom: 12px !important;
+  }
+
+  .mct-amenities-head > span {
+    font-size: 11px !important;
+  }
+
+  .mct-amenities-grid article {
+    min-height: 78px !important;
+    padding: 16px 22px 3px 0 !important;
+  }
+
+  .mct-amenities-grid article + article {
+    padding-left: 22px !important;
+  }
+
+  .mct-amenities-grid strong {
+    font-size: 24px !important;
+  }
+
+  .mct-amenities-grid span {
+    margin-top: 5px !important;
+    font-size: 10.5px !important;
+  }
+
+  /* Reviews --------------------------------------------------------------- */
+  .mct-reviews {
+    padding: 92px 0 96px !important;
+    overflow: hidden !important;
+    background:
+      radial-gradient(circle at 5% 8%, rgba(198, 165, 151, .13), transparent 30%),
+      #eee4dd !important;
+  }
+
+  .mct-reviews > .mct-shell {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    align-items: end !important;
+    column-gap: 36px !important;
+  }
+
+  .mct-review-summary {
+    min-width: 252px !important;
+    min-height: 58px !important;
+    justify-content: center !important;
+    padding: 0 24px !important;
+    border-radius: 999px !important;
+    background: rgba(255, 253, 250, .72) !important;
+    box-shadow: 0 10px 28px rgba(70, 51, 44, .055) !important;
+  }
+
+  .mct-review-summary span {
+    color: #554c48 !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+  }
+
+  .dct-review-drag-hint,
+  .dct-review-controls {
+    display: none !important;
+  }
+
+  .mct-review-viewport {
+    width: min(calc(100% - 96px), 1380px) !important;
+    margin: 34px auto 0 !important;
+    overflow: visible !important;
+    cursor: default !important;
+    touch-action: auto !important;
+  }
+
+  .mct-review-track {
+    display: block !important;
+    width: 100% !important;
+    transform: none !important;
+    will-change: auto !important;
+  }
+
+  .mct-review-set {
+    display: none !important;
+  }
+
+  .mct-review-set[aria-hidden="false"] {
+    display: grid !important;
+    width: 100% !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    align-items: start !important;
+    gap: 16px !important;
+    padding: 0 !important;
+  }
+
+  .mct-review-card {
+    display: flex !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    flex-basis: auto !important;
+    flex-direction: column !important;
+    padding: 27px 27px 24px !important;
+    overflow: hidden !important;
+    border: 1px solid rgba(78, 59, 52, .095) !important;
+    border-radius: 21px !important;
+    background: rgba(255, 253, 250, .82) !important;
+    box-shadow: 0 10px 28px rgba(69, 50, 43, .05) !important;
+    cursor: pointer !important;
+  }
+
+  .mct-review-card > span {
+    font-size: 11px !important;
+  }
+
+  .mct-review-card blockquote {
+    display: -webkit-box !important;
+    margin: 18px 0 17px !important;
+    overflow: hidden !important;
+    color: #37312e !important;
+    font-size: clamp(20px, 1.62vw, 24px) !important;
+    line-height: 1.3 !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 7 !important;
+  }
+
+  .mct-review-card small {
+    margin-top: 0 !important;
+    color: #776f6a !important;
+    font-size: 10px !important;
+  }
+
+  .mct-review-card i {
+    position: static !important;
+    display: block !important;
+    margin-top: 16px !important;
+    color: #76594f !important;
+    font-size: 0 !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+  }
+
+  .mct-review-card:not(.is-long) i {
+    display: none !important;
+  }
+
+  .mct-review-card.is-long i::after {
+    content: "Читать полностью в Dikidi \2192" !important;
+    font-size: 11px !important;
+  }
+
+  /* Booking and contacts -------------------------------------------------- */
+  .mct-visit {
+    padding: 82px 0 62px !important;
+  }
+
+  .mct-visit > .mct-shell {
+    display: block !important;
+    width: min(calc(100% - 96px), 1380px) !important;
+  }
+
+  .mct-visit-booking {
+    display: grid !important;
+    grid-template-columns: minmax(0, .92fr) minmax(520px, 1.08fr) !important;
+    grid-template-rows: auto auto 1fr !important;
+    column-gap: clamp(46px, 6vw, 88px) !important;
+    min-height: 0 !important;
+    padding: clamp(38px, 4vw, 54px) !important;
+    border-radius: 28px !important;
+    background: rgba(255, 255, 255, .035) !important;
+    box-shadow: 0 22px 58px rgba(20, 16, 14, .14) !important;
+  }
+
+  .mct-visit-booking-top {
+    grid-column: 1 / -1 !important;
+    grid-row: 1 !important;
+    margin-bottom: 25px !important;
+  }
+
+  .mct-visit-booking h3 {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    max-width: 620px !important;
+    margin: 0 !important;
+    font-size: clamp(48px, 4vw, 64px) !important;
+    line-height: .96 !important;
+  }
+
+  .mct-visit-booking > p {
+    grid-column: 1 !important;
+    grid-row: 3 !important;
+    align-self: end !important;
+    max-width: 540px !important;
+    margin: 24px 0 3px !important;
+    font-size: 14px !important;
+    line-height: 1.65 !important;
+  }
+
+  .mct-visit-actions {
+    grid-column: 2 !important;
+    grid-row: 2 / 4 !important;
+    display: grid !important;
+    align-self: stretch !important;
+    gap: 13px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .mct-final-cta {
+    width: 100% !important;
+    min-height: 62px !important;
+    margin: 0 !important;
+    padding-inline: 25px !important;
+    font-size: 13px !important;
+  }
+
+  .mct-final-contact-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 11px !important;
+    margin: 0 !important;
+  }
+
+  .mct-final-secondary {
+    min-height: 76px !important;
+    padding: 13px 35px 13px 14px !important;
+    border-radius: 18px !important;
+    background: rgba(255, 255, 255, .045) !important;
+  }
+
+  .mct-contact-icon {
+    width: 38px !important;
+    height: 38px !important;
+    flex: 0 0 38px !important;
+  }
+
+  .mct-contact-copy strong {
+    font-size: 12px !important;
+  }
+
+  .mct-contact-copy small {
+    margin-top: 4px !important;
+    font-size: 9px !important;
+  }
+
+  .mct-visit-details {
+    display: block !important;
+    min-height: 0 !important;
+    margin: 26px 0 0 !important;
+    padding: 0 3px !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .mct-visit-address {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 0 14px !important;
+    border: 0 !important;
+    font-size: clamp(24px, 2vw, 30px) !important;
+    white-space: normal !important;
+  }
+
+  .mct-visit-address span {
+    margin-top: 7px !important;
+    font-size: 10px !important;
+  }
+
+  .mct-sticky-wrap {
+    right: 24px !important;
+    bottom: 24px !important;
+    width: 330px !important;
+  }
+
+  .mct-sticky {
+    grid-template-columns: 42px minmax(0, 1fr) 36px !important;
+    min-height: 66px !important;
+    gap: 11px !important;
+    padding: 8px 9px 8px 8px !important;
+    border-radius: 20px !important;
+  }
+
+  .dct-sticky-live {
+    width: 42px !important;
+    height: 42px !important;
+    border-radius: 14px !important;
+  }
+
+  .mct-sticky-copy strong {
+    font-size: 12px !important;
+  }
+
+  .mct-sticky-copy small {
+    margin-top: 3px !important;
+    font-size: 8px !important;
+  }
+
+  .mct-sticky-arrow {
+    width: 36px !important;
+    height: 36px !important;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .mct-brand-yulia-image {
+    width: 72px !important;
+    height: 62px !important;
+    flex-basis: 72px !important;
+  }
+
+  .mct-brand-yulia-image img {
+    width: 62px !important;
+    height: 62px !important;
+    max-width: 62px !important;
+    max-height: 62px !important;
+  }
+
+  .mct-price-head {
+    grid-template-columns: minmax(330px, .9fr) minmax(340px, 1.1fr) !important;
+    column-gap: 42px !important;
+  }
+
+  .mct-service-list {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .mct-about-card {
+    grid-template-columns: minmax(340px, .9fr) minmax(0, 1.1fr) !important;
+  }
+
+  .mct-about-copy {
+    padding: 34px !important;
+  }
+
+  .mct-about-list {
+    grid-template-columns: 1fr !important;
+  }
+
+  .mct-about-list li {
+    min-height: 42px !important;
+  }
+
+  .mct-visit-booking {
+    grid-template-columns: minmax(0, .88fr) minmax(450px, 1.12fr) !important;
+    column-gap: 34px !important;
+  }
+
+  .mct-visit-booking h3 {
+    font-size: 46px !important;
+  }
+}
+
+@media (min-width: 1024px) and (prefers-reduced-motion: reduce) {
+  #mobile-portfolio .mct-work-tile img,
+  .mct-service-row.yulia-price-row,
+  .mct-service-row.yulia-price-row::after,
+  .mct-quiet-link {
+    transition: none !important;
+  }
+}

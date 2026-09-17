@@ -11,6 +11,7 @@ import "./desktop-performance.css";
 import "./claytone-refinement.css";
 import "./site-tuning.css";
 import "./android-scroll-safety.css";
+import "./desktop-v2.css";
 import site from "../site-data.mjs";
 
 export const metadata: Metadata = {
