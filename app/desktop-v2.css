@@ -224,7 +224,10 @@
   .mct-price-head {
     position: static !important;
     display: grid !important;
+    width: 100% !important;
     grid-template-columns: minmax(360px, .95fr) minmax(360px, 1.05fr) !important;
+    grid-column: 1 / -1 !important;
+    grid-row: auto !important;
     align-items: end !important;
     column-gap: clamp(54px, 7vw, 110px) !important;
   }
@@ -253,7 +256,7 @@
   }
 
   .mct-tabs-ribbon-wrap {
-    grid-column: 1 !important;
+    grid-column: 1 / -1 !important;
     width: 100% !important;
     margin-top: 38px !important;
   }
@@ -279,7 +282,9 @@
 
   .mct-service-list {
     display: grid !important;
+    width: 100% !important;
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-column: 1 / -1 !important;
     align-items: start !important;
     gap: 16px !important;
     margin-top: 22px !important;
@@ -292,7 +297,7 @@
     position: relative !important;
     display: block !important;
     width: 100% !important;
-    min-height: 172px !important;
+    min-height: 154px !important;
     margin: 0 !important;
     padding: 26px 76px 24px 26px !important;
     overflow: hidden !important;
@@ -459,7 +464,7 @@
   }
 
   .mct-more-services {
-    grid-column: 1 !important;
+    grid-column: 1 / -1 !important;
     width: min(100%, 390px) !important;
     min-height: 54px !important;
     margin-top: 26px !important;
@@ -481,6 +486,7 @@
 
   .mct-about-card {
     grid-template-columns: minmax(360px, .84fr) minmax(500px, 1.16fr) !important;
+    height: clamp(560px, 43vw, 620px) !important;
     min-height: 0 !important;
     margin-top: 28px !important;
     border-radius: 28px !important;
@@ -489,7 +495,12 @@
   }
 
   .mct-about-portrait-wrap {
+    height: 100% !important;
     min-height: 540px !important;
+  }
+
+  .mct-about-portrait {
+    height: 100% !important;
   }
 
   .mct-about-portrait img {

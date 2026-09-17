@@ -1017,7 +1017,7 @@ export default function MobileClayTone() {
         <div className="mct-shell">
           <div className="mct-price-head">
             <p className="mct-section-kicker">Услуги и цены</p>
-            <h2>Выберите<br />услугу</h2>
+            <h2>Выберите <br />услугу</h2>
             <span>Актуальная стоимость и продолжительность указаны для каждой процедуры. Онлайн-запись откроется в новой вкладке.</span>
           </div>
           <div className="mct-tabs-ribbon-wrap">
