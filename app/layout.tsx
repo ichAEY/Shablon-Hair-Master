@@ -214,7 +214,7 @@ export default function RootLayout({
           aria-hidden="true"
           tabIndex={-1}
         />
-        <script src={`${site.basePath}/claytone-enhancements.js?v=20260813-8`} defer />
+        <script src={`${site.basePath}/claytone-enhancements.js?v=20260917-9`} defer />
         <script src={`${site.basePath}/android-scroll-fix.js?v=20260813-2`} defer />
         <script
           type="text/javascript"

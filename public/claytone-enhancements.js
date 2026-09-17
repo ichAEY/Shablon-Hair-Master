@@ -187,6 +187,7 @@
 
   const pauseMovingRowsOffscreen = () => {
     if (!window.matchMedia("(min-width: 768px)").matches || !("IntersectionObserver" in window)) return;
+    if (window.matchMedia("(min-width: 1024px)").matches) return;
     const rows = document.querySelectorAll(".dct-gallery-viewport, .mct-review-viewport");
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
