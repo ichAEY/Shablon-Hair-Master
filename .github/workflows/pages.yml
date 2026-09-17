@@ -18,26 +18,33 @@ jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
-      pages-ready: ${{ steps.pages.outcome == 'success' }}
+      pages-ready: ${{ steps.pages-check.outputs.enabled }}
     env:
       NEXT_PUBLIC_BASE_PATH: /Shablon-Hair-Master
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: 24
           cache: npm
       - run: npm ci
       - run: npm run lint
       - run: npm test
-      - id: pages
-        continue-on-error: true
+      - id: pages-check
+        name: Check whether Pages is enabled
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh api "repos/${{ github.repository }}/pages" >/dev/null 2>&1; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.pages-check.outputs.enabled == 'true'
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
-      - if: steps.pages.outcome == 'failure'
+      - if: steps.pages-check.outputs.enabled != 'true'
         run: echo "::notice::Quality checks passed. Enable Settings → Pages → GitHub Actions to publish the preview."
-      - if: steps.pages.outcome == 'success'
+      - if: steps.pages-check.outputs.enabled == 'true'
         uses: actions/upload-pages-artifact@v4
         with:
           path: out
