@@ -17,6 +17,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      pages-ready: ${{ steps.pages.outcome == 'success' }}
     env:
       NEXT_PUBLIC_BASE_PATH: /Shablon-Hair-Master
     steps:
@@ -28,14 +30,20 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm test
-      - uses: actions/configure-pages@v5
+      - id: pages
+        continue-on-error: true
+        uses: actions/configure-pages@v5
         with:
           enablement: true
-      - uses: actions/upload-pages-artifact@v4
+      - if: steps.pages.outcome == 'failure'
+        run: echo "::notice::Quality checks passed. Enable Settings → Pages → GitHub Actions to publish the preview."
+      - if: steps.pages.outcome == 'success'
+        uses: actions/upload-pages-artifact@v4
         with:
           path: out
 
   deploy:
+    if: needs.build.outputs.pages-ready == 'true'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

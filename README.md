@@ -25,6 +25,6 @@ npm test
 npm run lint
 ```
 
-GitHub Actions проверяет данные, собирает статический сайт и публикует демонстрацию шаблона через GitHub Pages.
+GitHub Actions проверяет данные и собирает статический сайт. Для первой публикации демонстрации нужно один раз выбрать `Settings → Pages → Source → GitHub Actions`; после этого тот же workflow публикует сайт автоматически.
 
 Исходная визуальная версия зафиксирована по `ichAEY/Yulia-Roleva` commit `c0eb261`, с базой `ce1bd42b44e76e1851af9e069c4cbcf06fc8eac2` и патчами Tahmina `27e1f277b6071ca455ba2b1d3a475c6e5d7b7321`.
