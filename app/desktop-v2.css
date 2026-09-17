@@ -11,8 +11,15 @@
 .dct-about-amenities,
 .dct-visit-motto,
 .dct-booking-note,
+.dct-location-title,
 .dct-location-copy {
   display: none;
+}
+
+@media (max-width: 1023px) {
+  #mobile-portfolio .mct-work-tile:nth-child(n + 6) {
+    display: none !important;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -1104,8 +1111,8 @@
 
   .mct-mobile-service-price,
   .mct-mobile-service-time,
-  .mct-mobile-variant-time,
-  .mct-mobile-variant-price {
+  .yulia-service-variant > span .mct-mobile-variant-time,
+  .yulia-service-variant > .mct-mobile-variant-price {
     display: none !important;
   }
 
@@ -1526,6 +1533,9 @@
     min-height: 66px !important;
     justify-self: start !important;
     margin-top: 28px !important;
+    background: #916861 !important;
+    color: #fff !important;
+    box-shadow: 0 16px 36px rgba(10, 6, 5, .22) !important;
   }
 
   .dct-booking-note {
@@ -1577,7 +1587,12 @@
     width: 48px !important;
     height: 48px !important;
     flex: 0 0 48px !important;
+    border-radius: 50% !important;
     background: rgba(255, 255, 255, .1) !important;
+  }
+
+  .mct-contact-copy {
+    min-width: 0 !important;
   }
 
   .mct-contact-copy strong {
@@ -1590,17 +1605,25 @@
     color: rgba(247, 235, 228, .58) !important;
     font-size: 10px !important;
     line-height: 1.45 !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    white-space: normal !important;
   }
 
   .dct-location-copy {
     display: block !important;
   }
 
+  .dct-location-title {
+    display: block !important;
+  }
+
+  .mct-mobile-location-title,
   .mct-mobile-location-copy {
     display: none !important;
   }
 
-  .mct-visit-details {
+  html body .mct-visit .mct-visit-details {
     display: none !important;
   }
 }

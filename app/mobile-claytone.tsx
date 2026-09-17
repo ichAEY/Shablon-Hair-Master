@@ -1041,7 +1041,7 @@ export default function MobileClayTone() {
               const hasVariants = Boolean(service.variants?.length);
               const serviceKey = `${service.sectionKey ?? category}-${service.name}`;
               const hasDescription = Boolean(service.description);
-              const descriptionIsLong = service.description.length > 118;
+              const descriptionIsLong = service.description.length > 150;
               const descriptionExpanded = Boolean(expandedDescriptions[serviceKey]);
               return (
                 <a className={`mct-service-row yulia-price-row yulia-service-link${service.sectionLabel ? " has-group-label" : ""}${hasVariants ? " has-variants" : ""}${hasDescription ? " has-description" : ""}${descriptionExpanded ? " description-expanded" : ""}`} href={service.url} target="_blank" rel="noopener noreferrer" aria-label={`${service.name} — открыть запись в ${site.template.bookingProvider}`} key={serviceKey}>
@@ -1247,7 +1247,7 @@ export default function MobileClayTone() {
                 <a className="mct-final-secondary is-vk" href={vkUrl} target="_blank" rel="noopener noreferrer"><span className="mct-contact-icon" aria-hidden="true"><span className="mct-vk-letters">VK</span></span><span className="mct-contact-copy"><strong>ВКонтакте</strong><small>Написать {site.master.dative}</small></span><i className="mct-link-arrow" aria-hidden="true" /></a>
                 <a className="mct-final-secondary" href={mapUrl} target="_blank" rel="noopener noreferrer">
                   <span className="mct-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" /><circle cx="12" cy="10" r="2.5" /></svg></span>
-                  <span className="mct-contact-copy"><strong>Локация</strong><small className="mct-mobile-location-copy">Адрес и маршрут</small><small className="dct-location-copy">{site.location.city},<br />{site.location.mapCardAddress}</small></span><i className="mct-link-arrow" aria-hidden="true" />
+                  <span className="mct-contact-copy"><strong className="mct-mobile-location-title">Яндекс Карты</strong><strong className="dct-location-title">Локация</strong><small className="mct-mobile-location-copy">Адрес и маршрут</small><small className="dct-location-copy">{site.location.city},<br />{site.location.mapCardAddress}</small></span><i className="mct-link-arrow" aria-hidden="true" />
                 </a>
               </div>
             </div>
