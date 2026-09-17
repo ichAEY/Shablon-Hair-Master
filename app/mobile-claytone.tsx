@@ -50,7 +50,7 @@ const beforeAfter = site.images.beforeAfter;
 const galleryWorks = site.images.gallery;
 const desktopGalleryModules = [galleryWorks.slice(0, 4), galleryWorks.slice(4, 8), galleryWorks.slice(8)];
 const desktopGallerySetCount = 3;
-const featuredWorks = galleryWorks.slice(0, 5);
+const featuredWorks = galleryWorks.slice(0, 7);
 const lightboxItems = [...galleryWorks];
 const reviews = site.reviews;
 const reviewSetCount = 5;
@@ -80,6 +80,7 @@ const paletteSamples = [
 export default function MobileClayTone() {
   const [category, setCategory] = useState<"all" | "manicure" | "pedicure" | "podology" | "training">("all");
   const [expanded, setExpanded] = useState(false);
+  const [expandedDescriptions, setExpandedDescriptions] = useState<Record<string, boolean>>({});
   const [galleryOpen, setGalleryOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [introVisible, setIntroVisible] = useState(true);
@@ -1038,22 +1039,57 @@ export default function MobileClayTone() {
           <div className={`mct-service-list${isCollapsibleCategory && !expanded ? " is-collapsed" : " is-expanded"}`}>
             {visibleServices.map((service) => {
               const hasVariants = Boolean(service.variants?.length);
+              const serviceKey = `${service.sectionKey ?? category}-${service.name}`;
+              const hasDescription = Boolean(service.description);
+              const descriptionIsLong = service.description.length > 118;
+              const descriptionExpanded = Boolean(expandedDescriptions[serviceKey]);
               return (
-                <a className={`mct-service-row yulia-price-row yulia-service-link${service.sectionLabel ? " has-group-label" : ""}${hasVariants ? " has-variants" : ""}`} href={service.url} target="_blank" rel="noopener noreferrer" aria-label={`${service.name} — открыть запись в ${site.template.bookingProvider}`} key={`${service.sectionKey ?? category}-${service.name}`}>
+                <a className={`mct-service-row yulia-price-row yulia-service-link${service.sectionLabel ? " has-group-label" : ""}${hasVariants ? " has-variants" : ""}${hasDescription ? " has-description" : ""}${descriptionExpanded ? " description-expanded" : ""}`} href={service.url} target="_blank" rel="noopener noreferrer" aria-label={`${service.name} — открыть запись в ${site.template.bookingProvider}`} key={serviceKey}>
                   {service.sectionLabel && <div className="mct-service-group-label">{service.sectionLabel}</div>}
                   <div className="yulia-service-body">
                     <div className="yulia-service-head">
                       <strong className="yulia-service-title">{service.displayName || service.name}</strong>
-                      {!hasVariants && <b className="yulia-service-price">{service.price}</b>}
+                      {!hasVariants && <b className="yulia-service-price mct-mobile-service-price">{service.price}</b>}
                     </div>
-                    {service.description && <p className={`dct-service-description yulia-service-description${service.detailClass === "contouring" ? " yulia-contouring-detail" : ""}`}>{service.description}</p>}
-                    {!hasVariants && service.time && <small className="yulia-service-time">{service.time}</small>}
+                    <div className={`dct-service-description-slot${hasDescription ? " has-copy" : " is-empty"}`}>
+                      {hasDescription && <p className={`dct-service-description yulia-service-description${service.detailClass === "contouring" ? " yulia-contouring-detail" : ""}`}>{service.description}</p>}
+                      {descriptionIsLong && (
+                        <span
+                          className="dct-service-description-toggle"
+                          role="button"
+                          tabIndex={0}
+                          aria-expanded={descriptionExpanded}
+                          onClick={(event) => {
+                            event.preventDefault();
+                            event.stopPropagation();
+                            setExpandedDescriptions((current) => ({ ...current, [serviceKey]: !current[serviceKey] }));
+                          }}
+                          onKeyDown={(event) => {
+                            if (event.key !== "Enter" && event.key !== " ") return;
+                            event.preventDefault();
+                            event.stopPropagation();
+                            setExpandedDescriptions((current) => ({ ...current, [serviceKey]: !current[serviceKey] }));
+                          }}
+                        >{descriptionExpanded ? "Свернуть" : "Продолжить"}</span>
+                      )}
+                    </div>
+                    {!hasVariants && service.time && <small className="yulia-service-time mct-mobile-service-time">{service.time}</small>}
+                    {!hasVariants && (
+                      <div className="dct-service-meta" aria-hidden="true">
+                        {service.time && <small className="yulia-service-time">{service.time}</small>}
+                        <b className="yulia-service-price">{service.price}</b>
+                      </div>
+                    )}
                     {hasVariants && (
                       <div className="yulia-service-variants">
                         {service.variants!.map((item) => (
                           <div className="yulia-service-variant" key={item.label}>
-                            <span>{item.label}{item.time ? <small>{item.time}</small> : null}</span>
-                            <b>{item.price}</b>
+                            <span>{item.label}{item.time ? <small className="mct-mobile-variant-time">{item.time}</small> : null}</span>
+                            <b className="mct-mobile-variant-price">{item.price}</b>
+                            <span className="dct-service-variant-meta" aria-hidden="true">
+                              {item.time ? <small>{item.time}</small> : null}
+                              <b>{item.price}</b>
+                            </span>
                           </div>
                         ))}
                       </div>
@@ -1093,10 +1129,16 @@ export default function MobileClayTone() {
               <p>{site.master.aboutParagraphs[0]}</p>
               <p>{site.master.aboutParagraphs[1]}</p>
               <ul className="mct-about-list">{site.master.skills.map((skill) => <li key={skill}>{skill}</li>)}</ul>
+              <div className="dct-about-amenities" aria-label={`Дополнительная информация о визите к ${site.master.dative}`}>
+                <div className="dct-about-amenities-head"><p className="mct-section-kicker">Дополнительно</p><span>Полезно перед записью</span></div>
+                <div className="dct-about-amenities-grid">
+                  {site.amenities.map((item) => <article key={item.title}><strong>{item.title}</strong><span>{item.text}</span></article>)}
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="mct-amenities" aria-label={`О визите к ${site.master.dative}`}>
+          <div className="mct-amenities mct-about-amenities-mobile" aria-label={`О визите к ${site.master.dative}`}>
             <div className="mct-amenities-head"><p className="mct-section-kicker">Дополнительно</p><span>Полезно перед записью</span></div>
             <div className="mct-amenities-grid">
               {site.amenities.map((item) => <article key={item.title}><strong>{item.title}</strong><span>{item.text}</span></article>)}
@@ -1178,7 +1220,7 @@ export default function MobileClayTone() {
         </div>
       </section>
 
-      <section className="mct-visit mct-reveal" id="mobile-location" ref={finalBookRef}>
+      <section className="mct-visit mct-reveal" id="mobile-location" ref={finalBookRef} style={{ "--dct-visit-image": `url(${site.images.about})` } as CSSProperties}>
         <div className="mct-shell">
           <div className="mct-visit-booking" id="mobile-booking">
             <div className="mct-visit-booking-top">
@@ -1187,10 +1229,12 @@ export default function MobileClayTone() {
                 <i aria-hidden="true" />{openStatus.label}
               </span>
             </div>
+            <span className="dct-visit-motto" aria-hidden="true">Красивые волосы —<br />увереннее вы</span>
             <h3>Запишитесь онлайн<br /><em>или свяжитесь любым удобным способом</em></h3>
             <p>Выберите свободное время в {site.template.bookingProvider}. Если нужно уточнить услугу или подобрать процедуру, напишите {site.master.dative} напрямую.</p>
             <div className="mct-visit-actions">
               <a className="mct-final-cta" href={bookingUrl} target="_blank" rel="noopener noreferrer"><span>Выбрать время онлайн</span><i className="mct-link-arrow" aria-hidden="true" /></a>
+              <div className="dct-booking-note" aria-hidden="true"><span>▢</span><small>Запись через {site.template.bookingProvider}<br />по предварительной записи</small></div>
               <div className="mct-final-contact-grid" aria-label={`Способы связи с ${site.master.instrumental}`}>
                 <a className="mct-final-secondary" href={site.contacts.phoneHref}>
                   <span className="mct-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z" /></svg></span>
@@ -1203,7 +1247,7 @@ export default function MobileClayTone() {
                 <a className="mct-final-secondary is-vk" href={vkUrl} target="_blank" rel="noopener noreferrer"><span className="mct-contact-icon" aria-hidden="true"><span className="mct-vk-letters">VK</span></span><span className="mct-contact-copy"><strong>ВКонтакте</strong><small>Написать {site.master.dative}</small></span><i className="mct-link-arrow" aria-hidden="true" /></a>
                 <a className="mct-final-secondary" href={mapUrl} target="_blank" rel="noopener noreferrer">
                   <span className="mct-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" /><circle cx="12" cy="10" r="2.5" /></svg></span>
-                  <span className="mct-contact-copy"><strong>Яндекс Карты</strong><small>Адрес и маршрут</small></span><i className="mct-link-arrow" aria-hidden="true" />
+                  <span className="mct-contact-copy"><strong>Локация</strong><small className="mct-mobile-location-copy">Адрес и маршрут</small><small className="dct-location-copy">{site.location.city},<br />{site.location.mapCardAddress}</small></span><i className="mct-link-arrow" aria-hidden="true" />
                 </a>
               </div>
             </div>
