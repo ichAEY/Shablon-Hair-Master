@@ -1,0 +1,49 @@
+name: Bootstrap exact Julia assets
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/bootstrap-assets.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  assets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout target
+        uses: actions/checkout@v4
+
+      - name: Checkout pinned Julia source
+        uses: actions/checkout@v4
+        with:
+          repository: ichAEY/Yulia-Roleva
+          ref: c0eb261ff9b0c54bb33c40a0b549feb403174dbf
+          path: source
+
+      - name: Copy the exact production images
+        run: |
+          mkdir -p public/assets/yulia/portfolio public/assets/yulia/tools
+          cp source/IMG_2955.webp public/assets/yulia/logo.webp
+          cp source/EF89C52A-0BBF-4294-A253-89551CECD764.png public/assets/yulia/intro-logo.png
+          cp source/49D68491-5224-489E-8FF9-CD890A61D6E9.png public/assets/yulia/header-logo.png
+          cp source/IMG_2962.webp public/assets/yulia/master.webp
+          cp source/IMG_2963.webp public/assets/yulia/about.webp
+          cp source/0A6D15B8-18BB-4BD3-A9C7-8917F7BFCD65.png public/assets/yulia/tools/comb.png
+          cp source/C469DB40-1348-404A-9840-A814F476BA5B.png public/assets/yulia/tools/scissors.png
+          cp source/48FF1CCE-CB9A-4FB2-9EAC-E67D2054AECE.png public/assets/yulia/tools/hero.png
+          for file in             00_blurred_girl_first.webp             222e5ba9-b172-55a2-88f9-ee7b1c3a758a.webp             2f7c8fdb-b885-57c3-b59b-8b64612a43c7.webp             63637af1-c048-5eeb-a207-55d6e5bb7d89.webp             a937da8a-7189-5a7d-9c34-edce2654341a.webp             c0227806-1078-5a6c-ab05-5a9fffa2c998.webp             IMG_2946.webp IMG_2947.webp IMG_2948.webp IMG_2949.webp IMG_2950.webp             IMG_2951.webp IMG_2952.webp IMG_2953.webp IMG_2954.webp IMG_2994.webp; do
+            cp "source/$file" "public/assets/yulia/portfolio/$file"
+          done
+
+      - name: Commit assets and remove bootstrap
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add public/assets/yulia
+          git rm -f .bootstrap .github/workflows/bootstrap-assets.yml
+          git commit -m "Add exact Julia reference assets"
+          git push
