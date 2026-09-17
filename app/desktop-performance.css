@@ -1,0 +1,81 @@
+/* Desktop-only performance pass. Keeps the current visual language and animations. */
+
+@media (min-width: 768px) {
+  /* Telegram and Maps are intentionally removed from the desktop hero/header. */
+  .dct-top-icon {
+    display: none !important;
+  }
+  .dct-top-actions {
+    gap: 0 !important;
+  }
+
+  /* Large reveal effects were blurring entire sections while scrolling.
+     Keep the fade + movement, but avoid the expensive full-section blur. */
+  .mct-reveal {
+    filter: none;
+    will-change: opacity, transform;
+    transition:
+      opacity 760ms cubic-bezier(.22, .78, .25, 1),
+      transform 900ms cubic-bezier(.22, .78, .25, 1);
+  }
+
+  .mct-reveal.is-visible {
+    filter: none;
+    will-change: auto;
+  }
+
+  /* Continuously moving rows stay isolated on compositor-friendly layers. */
+  .dct-gallery-viewport,
+  .mct-review-viewport {
+    contain: layout paint;
+    isolation: isolate;
+  }
+
+  .dct-gallery-track,
+  .mct-review-track {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .dct-gallery-module .dct-film-frame,
+  .mct-review-card {
+    contain: paint;
+  }
+
+  /* Skip painting large lower-page sections while they are far off screen.
+     Their real size is remembered after the first render, so layout stays stable. */
+  .mct-promotions,
+  .mct-about,
+  .mct-reviews,
+  .mct-visit {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 900px;
+  }
+
+  /* The floating booking card is almost opaque already; removing backdrop blur
+     prevents a costly re-blur of the page behind it on every scroll frame. */
+  .mct-sticky {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  /* Keep transformed gallery images on stable compositor surfaces. */
+  .dct-gallery-module .dct-film-frame img,
+  .mct-promotion-card img,
+  .dct-hero-portrait img {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+}
+
+/* The infinite portfolio strip uses the screen edge-to-edge,
+   while the rest of the content keeps its approved max width. */
+@media (min-width: 1181px) {
+  #mobile-portfolio .dct-film-strip {
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+}

@@ -1,0 +1,55 @@
+/* Android/mobile scroll safety. No visual styling changes. */
+@media (max-width: 767px) {
+  html {
+    height: auto !important;
+    min-height: 100% !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    overscroll-behavior-y: auto !important;
+    touch-action: pan-y !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body {
+    height: auto !important;
+    min-height: 100% !important;
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+    overscroll-behavior-y: auto !important;
+    touch-action: pan-y !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .site-root,
+  .mct-mobile {
+    height: auto !important;
+    min-height: 100% !important;
+  }
+
+  .mct-mobile {
+    overflow-x: clip !important;
+    overflow-y: visible !important;
+  }
+
+  /* The intro is purely visual and must never capture a swipe. */
+  .mct-intro {
+    pointer-events: none !important;
+    touch-action: pan-y !important;
+  }
+
+  .mct-gallery-overlay {
+    overscroll-behavior: contain;
+    touch-action: pan-y;
+  }
+
+  .mct-lightbox {
+    overscroll-behavior: contain;
+  }
+
+  /* Keep intentional modal scroll locking on browsers that support :has(). */
+  body:has(.mct-gallery-overlay),
+  body:has(.mct-lightbox) {
+    overflow: hidden !important;
+    touch-action: none !important;
+  }
+}
