@@ -31,6 +31,7 @@ url(site.links.bookingUrl, "links.bookingUrl");
 url(site.links.reviewsUrl, "links.reviewsUrl");
 url(site.links.mapUrl, "links.mapUrl");
 url(site.links.routeUrl, "links.routeUrl");
+url(site.seo.siteUrl, "seo.siteUrl");
 url(site.contacts.personalTelegramUrl, "contacts.personalTelegramUrl");
 url(site.contacts.vkUrl, "contacts.vkUrl");
 

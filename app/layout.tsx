@@ -14,6 +14,7 @@ import "./android-scroll-safety.css";
 import site from "../site-data.mjs";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(site.seo.siteUrl),
   title: site.seo.title,
   description: site.seo.description,
   keywords: site.seo.keywords,
