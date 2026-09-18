@@ -142,17 +142,7 @@ export default function MobileClayTone() {
 
   useEffect(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const introKey = "tanem-hair-intro-shown";
-    let shouldShowIntro = false;
-
-    try {
-      shouldShowIntro = window.sessionStorage.getItem(introKey) !== "1";
-      if (shouldShowIntro) window.sessionStorage.setItem(introKey, "1");
-    } catch {
-      shouldShowIntro = true;
-    }
-
-    if (!shouldShowIntro || reduceMotion) return;
+    if (reduceMotion) return;
 
     const previousOverflow = document.body.style.overflow;
     let restored = false;
