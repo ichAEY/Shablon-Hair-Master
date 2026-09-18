@@ -3118,3 +3118,23 @@
     flex-basis: 410px !important;
   }
 }
+
+
+/* Review render split 2026-09-18 — preserve mobile, use compact desktop cards. */
+.mct-review-pair {
+  display: contents;
+}
+
+.dct-review-card {
+  display: none !important;
+}
+
+@media (min-width: 1024px) {
+  .mct-review-card-mobile {
+    display: none !important;
+  }
+
+  .dct-review-card {
+    display: flex !important;
+  }
+}
