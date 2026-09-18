@@ -83,7 +83,7 @@ export default function MobileClayTone() {
   const [expandedDescriptions, setExpandedDescriptions] = useState<Record<string, boolean>>({});
   const [galleryOpen, setGalleryOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [introVisible, setIntroVisible] = useState(true);
+  const [introVisible, setIntroVisible] = useState(false);
   const [stickyVisible, setStickyVisible] = useState(false);
   const [activeBeforeAfter, setActiveBeforeAfter] = useState(0);
   const [activePromotion, setActivePromotion] = useState(0);
@@ -142,19 +142,36 @@ export default function MobileClayTone() {
 
   useEffect(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const introKey = "tanem-hair-intro-shown";
+    let shouldShowIntro = false;
+
+    try {
+      shouldShowIntro = window.sessionStorage.getItem(introKey) !== "1";
+      if (shouldShowIntro) window.sessionStorage.setItem(introKey, "1");
+    } catch {
+      shouldShowIntro = true;
+    }
+
+    if (!shouldShowIntro || reduceMotion) {
+      setIntroVisible(false);
+      return;
+    }
+
     const previousOverflow = document.body.style.overflow;
     let restored = false;
-
+    setIntroVisible(true);
     document.body.style.overflow = "hidden";
+
     const restoreScroll = () => {
       if (restored) return;
       restored = true;
       document.body.style.overflow = previousOverflow;
     };
+
     const timer = window.setTimeout(() => {
       restoreScroll();
       setIntroVisible(false);
-    }, reduceMotion ? 180 : 2300);
+    }, 2300);
 
     return () => {
       window.clearTimeout(timer);
@@ -1360,26 +1377,7 @@ export default function MobileClayTone() {
               </div>
             </div>
           </div>
-          <div className="mct-visit-details">
-            <p className="mct-visit-address">{site.location.address}<span>{site.location.metro} · {site.location.schedule}</span></p>
-            <div className="mct-map-wrap">
-              <iframe
-                className="mct-map-mobile"
-                src={mobileMapEmbedUrl}
-                title={`${site.master.name} на Яндекс Картах`}
-                loading="lazy"
-                allowFullScreen
-              />
-              <iframe
-                className="dct-map-desktop"
-                src={desktopMapEmbedUrl}
-                title={`Точка ${site.master.name} на Яндекс Картах`}
-                loading="lazy"
-                allowFullScreen
-              />
-              <a href={routeUrl} target="_blank" rel="noopener noreferrer" aria-label={`Построить маршрут к ${site.master.dative} в Яндекс Картах`}>Построить маршрут →</a>
-            </div>
-          </div>
+
         </div>
       </section>
       <a className="mct-stluxe-footer" href="https://tanem.ru/" target="_blank" rel="noopener noreferrer"><span className="stl-tanem-mark">T</span><span className="stl-tanem-credit">Создано в <strong>TANEM.ru</strong></span></a>
