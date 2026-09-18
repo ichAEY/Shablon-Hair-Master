@@ -2210,3 +2210,41 @@
     min-height: 190px !important;
   }
 }
+
+
+/* Desktop service-card fit guard 2026-09-18. */
+@media (min-width: 1024px) {
+  .dct-service-card {
+    padding: 20px 22px !important;
+  }
+
+  .dct-service-card.has-variants .dct-service-card-description {
+    min-height: 0 !important;
+    margin-top: 6px !important;
+  }
+
+  .dct-service-card.has-variants .dct-service-card-description.is-empty {
+    display: none !important;
+  }
+
+  .dct-service-card.has-variants .dct-service-card-description p {
+    -webkit-line-clamp: 1 !important;
+  }
+
+  .dct-service-card.has-variants.description-expanded .dct-service-card-description p {
+    display: block !important;
+    -webkit-line-clamp: initial !important;
+  }
+
+  .dct-service-card-variant {
+    min-height: 28px !important;
+  }
+
+  .dct-service-card-variant > span:first-child {
+    font-size: 13px !important;
+  }
+
+  .dct-service-card-variant-meta > b {
+    font-size: 19px !important;
+  }
+}
