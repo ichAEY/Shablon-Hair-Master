@@ -3361,3 +3361,240 @@
     transition: none !important;
   }
 }
+
+
+/* Final services alignment 2026-09-18. */
+@media (min-width: 1024px) {
+  /* Left heading is a fixed visual anchor: top-left, no centering or motion. */
+  .mct-price-head {
+    position: sticky !important;
+    top: 108px !important;
+    align-self: start !important;
+    padding-top: 0 !important;
+    text-align: left !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .mct-price-head .mct-section-kicker,
+  .mct-price-head h2,
+  .mct-price-head > span {
+    width: auto !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    text-align: left !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  .mct-price-head h2 {
+    margin-top: 12px !important;
+    font-size: clamp(45px, 3.75vw, 58px) !important;
+    line-height: .94 !important;
+    white-space: nowrap !important;
+  }
+
+  .mct-price-head h2 br {
+    display: none !important;
+  }
+
+  .mct-price-head > span {
+    max-width: 340px !important;
+    margin-top: 26px !important;
+  }
+
+  /* Categories occupy exactly the same horizontal frame as service cards. */
+  .mct-tabs-ribbon-wrap,
+  .mct-tabs,
+  .mct-tabs-track,
+  .dct-service-groups,
+  .dct-service-category-list {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  .mct-tabs-ribbon-wrap {
+    padding: 24px 0 16px !important;
+  }
+
+  .mct-tabs {
+    margin: -10px 0 -16px !important;
+    padding: 10px 0 16px !important;
+  }
+
+  .mct-tabs-track {
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+    min-width: 100% !important;
+    padding: 5px 0 18px !important;
+  }
+
+  .mct-tabs-scroll .mct-tab,
+  .mct-tabs-scroll .mct-tab-all {
+    width: 100% !important;
+    min-width: 0 !important;
+    padding-inline: 12px !important;
+  }
+
+  /* One shared right-side grid for every duration and every price. */
+  .dct-service-card:not(.has-variants) .dct-service-card-body {
+    grid-template-columns: minmax(0, 1fr) 112px 150px !important;
+    column-gap: 18px !important;
+  }
+
+  .dct-service-card:not(.has-variants) .dct-service-card-meta {
+    display: contents !important;
+  }
+
+  .dct-service-card:not(.has-variants) .dct-service-card-meta > small,
+  .dct-service-card:not(.has-variants) .dct-service-card-meta > span {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    align-self: center !important;
+    justify-self: start !important;
+  }
+
+  .dct-service-card:not(.has-variants) .dct-service-card-meta > b {
+    grid-column: 3 !important;
+    grid-row: 1 !important;
+    align-self: center !important;
+    justify-self: end !important;
+    width: 150px !important;
+    min-width: 150px !important;
+    text-align: right !important;
+  }
+
+  .dct-service-card.has-variants .dct-service-card-variant {
+    grid-template-columns: minmax(0, 1fr) 280px !important;
+    column-gap: 22px !important;
+  }
+
+  .dct-service-card.has-variants .dct-service-card-variant-meta {
+    display: grid !important;
+    width: 280px !important;
+    min-width: 280px !important;
+    grid-template-columns: 112px 150px !important;
+    gap: 18px !important;
+    justify-content: end !important;
+  }
+
+  .dct-service-card.has-variants .dct-service-card-variant-meta > small {
+    grid-column: 1 !important;
+    justify-self: start !important;
+  }
+
+  .dct-service-card.has-variants .dct-service-card-variant-meta > b {
+    grid-column: 2 !important;
+    width: 150px !important;
+    min-width: 150px !important;
+    justify-self: end !important;
+    text-align: right !important;
+  }
+
+  /* Missing durations keep their duration column empty; price never moves into it. */
+  .dct-service-card.has-variants .dct-service-card-variant-meta > b:only-child {
+    grid-column: 2 !important;
+  }
+
+  /* Long single-service descriptions stay in the text column and cannot push meta. */
+  .dct-service-card:not(.has-variants).has-description .dct-service-card-body {
+    grid-template-rows: auto auto !important;
+    align-content: center !important;
+  }
+
+  .dct-service-card:not(.has-variants).has-description .dct-service-card-title {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    transform: none !important;
+    align-self: end !important;
+  }
+
+  .dct-service-card:not(.has-variants).has-description .dct-service-card-description {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    margin: 7px 0 0 !important;
+    align-self: start !important;
+  }
+
+  .dct-service-card:not(.has-variants).has-description .dct-service-card-meta > small,
+  .dct-service-card:not(.has-variants).has-description .dct-service-card-meta > span,
+  .dct-service-card:not(.has-variants).has-description .dct-service-card-meta > b {
+    grid-row: 1 / 3 !important;
+    align-self: center !important;
+  }
+
+  /* Entrance choreography for the right service area only. */
+  .mct-prices.is-visible .mct-tabs-ribbon-wrap {
+    animation: dct-service-enter .68s cubic-bezier(.22,.72,.22,1) .08s both !important;
+  }
+
+  .mct-prices.is-visible .dct-service-groups {
+    animation: dct-service-enter .78s cubic-bezier(.22,.72,.22,1) .18s both !important;
+  }
+
+  .mct-prices.is-visible .dct-service-card {
+    animation: dct-card-enter .58s cubic-bezier(.22,.72,.22,1) both !important;
+  }
+
+  .mct-prices.is-visible .dct-service-card:nth-child(2) { animation-delay: .05s !important; }
+  .mct-prices.is-visible .dct-service-card:nth-child(3) { animation-delay: .10s !important; }
+  .mct-prices.is-visible .dct-service-card:nth-child(4) { animation-delay: .15s !important; }
+  .mct-prices.is-visible .dct-service-card:nth-child(5) { animation-delay: .20s !important; }
+  .mct-prices.is-visible .dct-service-card:nth-child(6) { animation-delay: .25s !important; }
+}
+
+@keyframes dct-service-enter {
+  from { opacity: 0; transform: translate3d(0, 22px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes dct-card-enter {
+  from { opacity: 0; transform: translate3d(0, 14px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .mct-price-head {
+    top: 96px !important;
+  }
+
+  .mct-price-head h2 {
+    font-size: 43px !important;
+  }
+
+  .dct-service-card:not(.has-variants) .dct-service-card-body {
+    grid-template-columns: minmax(0, 1fr) 98px 132px !important;
+    column-gap: 14px !important;
+  }
+
+  .dct-service-card:not(.has-variants) .dct-service-card-meta > b {
+    width: 132px !important;
+    min-width: 132px !important;
+  }
+
+  .dct-service-card.has-variants .dct-service-card-variant {
+    grid-template-columns: minmax(0, 1fr) 244px !important;
+  }
+
+  .dct-service-card.has-variants .dct-service-card-variant-meta {
+    width: 244px !important;
+    min-width: 244px !important;
+    grid-template-columns: 98px 132px !important;
+    gap: 14px !important;
+  }
+
+  .dct-service-card.has-variants .dct-service-card-variant-meta > b {
+    width: 132px !important;
+    min-width: 132px !important;
+  }
+}
+
+@media (min-width: 1024px) and (prefers-reduced-motion: reduce) {
+  .mct-prices.is-visible .mct-tabs-ribbon-wrap,
+  .mct-prices.is-visible .dct-service-groups,
+  .mct-prices.is-visible .dct-service-card {
+    animation: none !important;
+  }
+}
