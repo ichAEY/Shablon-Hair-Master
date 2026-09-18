@@ -2248,3 +2248,488 @@
     font-size: 19px !important;
   }
 }
+
+
+/* Final desktop pass 2026-09-18 — single-sided price list and visual polish. */
+@media (min-width: 1024px) {
+  /* Portfolio title slightly higher + richer warm shadows without separators. */
+  #mobile-portfolio {
+    padding-top: 78px !important;
+    background:
+      radial-gradient(ellipse at 7% 0%, rgba(151, 104, 87, .20), transparent 30%),
+      radial-gradient(ellipse at 94% 20%, rgba(181, 136, 119, .17), transparent 32%),
+      radial-gradient(ellipse at 52% 100%, rgba(165, 120, 103, .10), transparent 34%),
+      linear-gradient(180deg, #f6f1eb 0%, #f3e8e1 34%, #f5ece6 74%, #f6f1eb 100%) !important;
+  }
+
+  #mobile-portfolio .mct-section-head {
+    transform: translateY(-12px) !important;
+  }
+
+  .mct-prices {
+    background:
+      radial-gradient(ellipse at 5% 3%, rgba(159, 112, 94, .22), transparent 31%),
+      radial-gradient(ellipse at 92% 72%, rgba(194, 151, 132, .14), transparent 34%),
+      linear-gradient(180deg, #f6f1eb 0%, #f8f3ee 22%, #f7f1ec 80%, #f4eae3 100%) !important;
+  }
+
+  .mct-about {
+    background:
+      radial-gradient(ellipse at 91% 4%, rgba(161, 113, 96, .19), transparent 30%),
+      radial-gradient(ellipse at 8% 86%, rgba(194, 151, 132, .12), transparent 31%),
+      linear-gradient(180deg, #f4eae3 0%, #f1e4dc 42%, #f5ece6 100%) !important;
+  }
+
+  .mct-reviews {
+    background:
+      radial-gradient(ellipse at 4% 3%, rgba(161, 113, 96, .15), transparent 29%),
+      radial-gradient(ellipse at 94% 78%, rgba(185, 140, 121, .12), transparent 31%),
+      linear-gradient(180deg, #f5ece6 0%, #eee1d8 50%, #f4e9e2 100%) !important;
+  }
+
+  /* Prices: editorial intro on the left, all controls and prices on the right. */
+  .mct-prices {
+    overflow: hidden !important;
+  }
+
+  .mct-prices > .mct-shell {
+    position: relative !important;
+    display: grid !important;
+    grid-template-columns: minmax(280px, .74fr) minmax(650px, 1.55fr) !important;
+    column-gap: clamp(52px, 6vw, 96px) !important;
+    align-items: start !important;
+  }
+
+  .mct-price-head {
+    position: sticky !important;
+    top: 112px !important;
+    display: block !important;
+    grid-column: 1 !important;
+    width: 100% !important;
+    padding: 6px clamp(24px, 3vw, 48px) 0 0 !important;
+  }
+
+  .mct-price-head::after {
+    position: absolute !important;
+    top: 4px !important;
+    right: 0 !important;
+    width: 1px !important;
+    height: min(72vh, 660px) !important;
+    background: linear-gradient(180deg, transparent, rgba(108, 77, 66, .22) 10%, rgba(108, 77, 66, .15) 86%, transparent) !important;
+    content: "" !important;
+  }
+
+  .mct-price-head .mct-section-kicker {
+    margin: 0 !important;
+  }
+
+  .mct-price-head h2 {
+    margin: 15px 0 0 !important;
+    font-size: clamp(58px, 5vw, 78px) !important;
+    line-height: .88 !important;
+  }
+
+  .mct-price-head h2 br {
+    display: block !important;
+  }
+
+  .mct-price-head > span {
+    display: block !important;
+    max-width: 360px !important;
+    margin: 32px 0 0 !important;
+    color: #655c57 !important;
+    font-size: 13px !important;
+    line-height: 1.72 !important;
+  }
+
+  .mct-tabs-ribbon-wrap {
+    grid-column: 2 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 0 22px !important;
+    overflow: visible !important;
+  }
+
+  .mct-tabs {
+    width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scrollbar-width: none !important;
+    scroll-snap-type: x proximity !important;
+    overscroll-behavior-x: contain !important;
+  }
+
+  .mct-tabs::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .mct-tabs-track {
+    display: flex !important;
+    width: max-content !important;
+    min-width: 100% !important;
+    gap: 10px !important;
+    padding: 2px 1px 12px !important;
+  }
+
+  .mct-tabs-scroll .mct-tab {
+    width: auto !important;
+    min-width: 126px !important;
+    min-height: 48px !important;
+    flex: 0 0 auto !important;
+    padding: 0 24px !important;
+    scroll-snap-align: start !important;
+    font-size: 13px !important;
+  }
+
+  .mct-tabs-scroll .mct-tab-all {
+    min-width: 100px !important;
+  }
+
+  .dct-service-groups {
+    grid-column: 2 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+  }
+
+  .dct-service-category + .dct-service-category {
+    margin-top: 34px !important;
+  }
+
+  .dct-service-category-heading {
+    margin-bottom: 12px !important;
+  }
+
+  .dct-service-category-list {
+    display: grid !important;
+    width: 100% !important;
+    gap: 12px !important;
+  }
+
+  .dct-service-card {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 116px !important;
+    padding: 20px 22px !important;
+    border-radius: 20px !important;
+  }
+
+  .dct-service-card.has-description,
+  .dct-service-card.has-variants {
+    min-height: 138px !important;
+  }
+
+  .dct-service-card.description-expanded {
+    min-height: 138px !important;
+  }
+
+  .dct-service-card-body {
+    display: grid !important;
+    height: auto !important;
+    min-height: 74px !important;
+    grid-template-columns: minmax(0, 1fr) minmax(210px, 290px) !important;
+    grid-template-rows: auto 1fr !important;
+    column-gap: 28px !important;
+    align-items: start !important;
+  }
+
+  .dct-service-card-title {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    padding-right: 8px !important;
+    font-size: clamp(23px, 1.7vw, 29px) !important;
+    line-height: 1.04 !important;
+  }
+
+  .dct-service-card-description {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    min-height: 0 !important;
+    max-width: 95% !important;
+    margin: 10px 0 0 !important;
+    padding-right: 14px !important;
+  }
+
+  .dct-service-card-description.is-empty {
+    display: none !important;
+  }
+
+  .dct-service-card-description p {
+    display: -webkit-box !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    color: #756b65 !important;
+    font-size: 11px !important;
+    line-height: 1.5 !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 2 !important;
+  }
+
+  .dct-service-card.description-expanded .dct-service-card-description p {
+    display: block !important;
+    overflow: visible !important;
+    -webkit-line-clamp: initial !important;
+  }
+
+  .dct-service-description-toggle {
+    display: inline-block !important;
+    margin-top: 5px !important;
+    color: #7b5d53 !important;
+    font-size: 10px !important;
+    font-weight: 650 !important;
+  }
+
+  .dct-service-card-meta {
+    display: flex !important;
+    grid-column: 2 !important;
+    grid-row: 1 / 3 !important;
+    min-height: 74px !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 18px !important;
+    margin: 0 !important;
+  }
+
+  .dct-service-card-meta > small,
+  .dct-service-card-variant-meta > small {
+    min-width: 0 !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    color: #8a7c75 !important;
+    font-size: 9.5px !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+  }
+
+  .dct-service-card-meta > small::before,
+  .dct-service-card-variant-meta > small::before {
+    margin-right: 5px !important;
+    color: #a07d71 !important;
+    content: "\25F7" !important;
+    font-size: 10px !important;
+  }
+
+  .dct-service-card-meta > b {
+    min-width: 116px !important;
+    color: #302a27 !important;
+    font-size: 22px !important;
+    text-align: right !important;
+  }
+
+  .dct-service-card-variants {
+    display: grid !important;
+    grid-column: 2 !important;
+    grid-row: 1 / 3 !important;
+    align-self: center !important;
+    gap: 0 !important;
+    margin: 0 !important;
+  }
+
+  .dct-service-card-variant {
+    display: grid !important;
+    min-height: 31px !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    align-items: center !important;
+    gap: 12px !important;
+    border-top: 1px solid rgba(83, 63, 55, .07) !important;
+  }
+
+  .dct-service-card-variant:first-child {
+    border-top: 0 !important;
+  }
+
+  .dct-service-card-variant > span:first-child {
+    min-width: 0 !important;
+    color: #5c524d !important;
+    font-size: 11.5px !important;
+    white-space: nowrap !important;
+  }
+
+  .dct-service-card-variant-meta {
+    display: grid !important;
+    min-width: 176px !important;
+    grid-template-columns: 60px minmax(100px, auto) !important;
+    align-items: center !important;
+    justify-content: end !important;
+    gap: 8px !important;
+  }
+
+  .dct-service-card-variant-meta > small {
+    text-align: left !important;
+  }
+
+  .dct-service-card-variant-meta > b {
+    font-size: 19px !important;
+    text-align: right !important;
+    white-space: nowrap !important;
+  }
+
+  .mct-more-services {
+    grid-column: 2 !important;
+    justify-self: end !important;
+    width: 300px !important;
+    min-height: 56px !important;
+    margin: 28px 0 0 !important;
+  }
+
+  /* Master: balanced middle composition, no empty gulf before extras. */
+  .mct-about-card {
+    height: clamp(600px, 43vw, 640px) !important;
+  }
+
+  .mct-about-copy {
+    justify-content: center !important;
+    padding: clamp(34px, 3.6vw, 52px) !important;
+  }
+
+  .mct-about-copy > .mct-about-lead {
+    margin: 0 0 12px !important;
+  }
+
+  .mct-about-copy > p {
+    margin: 8px 0 0 !important;
+  }
+
+  .dct-about-extra-copy {
+    margin-top: 8px !important;
+  }
+
+  .mct-about-list {
+    margin: 22px 0 0 !important;
+  }
+
+  .dct-about-amenities {
+    margin-top: 24px !important;
+    padding-top: 20px !important;
+  }
+
+  /* Reviews must show the full text: no clipping, no fake 'read more'. */
+  .mct-review-viewport {
+    width: min(calc(100% - 76px), 1480px) !important;
+    margin: 36px auto 0 !important;
+    overflow: hidden !important;
+  }
+
+  .mct-review-set,
+  .mct-review-set[aria-hidden="false"] {
+    align-items: stretch !important;
+    gap: 18px !important;
+  }
+
+  .mct-review-card,
+  .mct-review-card.is-long {
+    display: flex !important;
+    width: 500px !important;
+    min-width: 500px !important;
+    height: auto !important;
+    min-height: 330px !important;
+    flex: 0 0 500px !important;
+    padding: 30px 30px 27px !important;
+    overflow: visible !important;
+  }
+
+  .mct-review-card blockquote,
+  .mct-review-card.is-long blockquote {
+    display: block !important;
+    margin: 18px 0 22px !important;
+    overflow: visible !important;
+    font-size: 19px !important;
+    line-height: 1.38 !important;
+    -webkit-box-orient: initial !important;
+    -webkit-line-clamp: initial !important;
+  }
+
+  .mct-review-card small {
+    margin-top: auto !important;
+    font-size: 11px !important;
+  }
+
+  .mct-review-card i,
+  .mct-review-card.is-long i,
+  .mct-review-card:not(.is-long) i {
+    display: none !important;
+  }
+
+  /* Return booking area to the warmer original palette and give map real weight. */
+  .mct-visit {
+    background: #3f312c !important;
+  }
+
+  .mct-visit-booking {
+    min-height: 720px !important;
+    grid-template-columns: minmax(0, 1fr) 520px !important;
+    background:
+      radial-gradient(circle at 82% 18%, rgba(179, 141, 123, .10), transparent 32%),
+      linear-gradient(135deg, #51423d 0%, #493a35 52%, #41332e 100%) !important;
+  }
+
+  html body .mct-visit .mct-visit-details {
+    top: 156px !important;
+    right: clamp(44px, 5vw, 72px) !important;
+    width: 500px !important;
+  }
+
+  .mct-visit .mct-map-wrap {
+    width: 100% !important;
+    height: 470px !important;
+    min-height: 470px !important;
+    border-radius: 24px !important;
+    box-shadow: 0 22px 48px rgba(21, 13, 10, .20) !important;
+  }
+
+  .mct-visit .mct-map-wrap .dct-map-desktop {
+    filter: saturate(.82) sepia(.04) contrast(.97) !important;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .mct-prices > .mct-shell {
+    grid-template-columns: minmax(250px, .65fr) minmax(590px, 1.5fr) !important;
+    column-gap: 38px !important;
+  }
+
+  .mct-price-head {
+    padding-right: 28px !important;
+  }
+
+  .mct-price-head h2 {
+    font-size: 58px !important;
+  }
+
+  .dct-service-card-body {
+    grid-template-columns: minmax(0, 1fr) minmax(205px, 255px) !important;
+    column-gap: 18px !important;
+  }
+
+  .dct-service-card-title {
+    font-size: 23px !important;
+  }
+
+  .dct-service-card-variant-meta {
+    min-width: 160px !important;
+    grid-template-columns: 54px minmax(98px, auto) !important;
+  }
+
+  .mct-review-card,
+  .mct-review-card.is-long {
+    width: 460px !important;
+    min-width: 460px !important;
+    flex-basis: 460px !important;
+  }
+
+  .mct-visit-booking {
+    grid-template-columns: minmax(0, 1fr) 430px !important;
+  }
+
+  html body .mct-visit .mct-visit-details {
+    right: 42px !important;
+    width: 410px !important;
+  }
+
+  .mct-visit .mct-map-wrap {
+    height: 420px !important;
+    min-height: 420px !important;
+  }
+}
