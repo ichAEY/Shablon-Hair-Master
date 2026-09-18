@@ -1112,7 +1112,7 @@ export default function MobileClayTone() {
                       <span>{group.label}</span><i aria-hidden="true" />
                     </div>
                   )}
-                  <div className="dct-service-category-grid">
+                  <div className="dct-service-category-list">
                     {groupServices.map((service) => {
                       const hasVariants = Boolean(service.variants?.length);
                       const serviceKey = `desktop-${groupKey}-${service.name}`;
