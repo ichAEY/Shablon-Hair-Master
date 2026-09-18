@@ -3622,3 +3622,17 @@
     font-size: 47.3px !important;
   }
 }
+
+
+/* Final divider + service spacing lock 2026-09-18. */
+@media (min-width: 1024px) {
+  /* Move only the divider left so it sits visually between heading and categories. */
+  .mct-price-head::after {
+    right: 1.3cm !important;
+  }
+
+  /* Pull only the service cards closer to the category row by ~1 cm. */
+  .dct-service-groups {
+    margin-top: -1cm !important;
+  }
+}
