@@ -3138,3 +3138,226 @@
     display: flex !important;
   }
 }
+
+
+/* Completion pass 2026-09-18 — final desktop motion and alignment. */
+@media (min-width: 1024px) {
+  /* Header logo +15%. */
+  .mct-brand-yulia-image {
+    width: 94px !important;
+    height: 81px !important;
+    flex-basis: 94px !important;
+  }
+
+  .mct-brand-yulia-image img {
+    width: 81px !important;
+    height: 81px !important;
+    max-width: 81px !important;
+    max-height: 81px !important;
+  }
+
+  /* Calm staged entrance on the hero. */
+  .mct-topbar {
+    animation: dct-enter-down .72s cubic-bezier(.22,.72,.22,1) .05s both !important;
+  }
+
+  .mct-hero-meta {
+    animation: dct-enter-up .7s cubic-bezier(.22,.72,.22,1) .16s both !important;
+  }
+
+  .mct-hero-content h1 {
+    animation: dct-enter-up .82s cubic-bezier(.22,.72,.22,1) .24s both !important;
+  }
+
+  .mct-hero-copy {
+    animation: dct-enter-up .76s cubic-bezier(.22,.72,.22,1) .34s both !important;
+  }
+
+  .mct-hero-visual {
+    animation: dct-hero-reveal .96s cubic-bezier(.2,.72,.18,1) .18s both !important;
+  }
+
+  .mct-hero-actions {
+    animation: dct-enter-up .76s cubic-bezier(.22,.72,.22,1) .48s both !important;
+  }
+
+  .mct-stats {
+    animation: dct-enter-up .78s cubic-bezier(.22,.72,.22,1) .58s both !important;
+  }
+
+  /* Existing reveal system gets a little more depth on desktop. */
+  .mct-reveal {
+    opacity: 0 !important;
+    transform: translate3d(0, 30px, 0) scale(.992) !important;
+    transition:
+      opacity .82s cubic-bezier(.22,.72,.22,1),
+      transform .9s cubic-bezier(.22,.72,.22,1) !important;
+    will-change: opacity, transform !important;
+  }
+
+  .mct-reveal.is-visible {
+    opacity: 1 !important;
+    transform: translate3d(0, 0, 0) scale(1) !important;
+  }
+
+  #mobile-portfolio .dct-film-strip {
+    transition: opacity .8s ease .12s, transform .88s cubic-bezier(.22,.72,.22,1) .12s !important;
+  }
+
+  #mobile-portfolio .mct-reveal:not(.is-visible) .dct-film-strip {
+    opacity: 0 !important;
+    transform: translate3d(0, 24px, 0) !important;
+  }
+
+  #mobile-portfolio .mct-reveal.is-visible .dct-film-strip {
+    opacity: 1 !important;
+    transform: translate3d(0, 0, 0) !important;
+  }
+
+  /* Price intro sits higher and is centered in the left field up to the divider. */
+  .mct-price-head {
+    top: 82px !important;
+    align-self: start !important;
+    padding-top: 0 !important;
+    text-align: center !important;
+  }
+
+  .mct-price-head .mct-section-kicker,
+  .mct-price-head h2,
+  .mct-price-head > span {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .mct-price-head h2 {
+    margin-top: 10px !important;
+  }
+
+  .mct-price-head > span {
+    margin-top: 22px !important;
+  }
+
+  /* Let category shadows breathe instead of clipping against the scroll texture. */
+  .mct-tabs-ribbon-wrap {
+    padding-top: 31px !important;
+    padding-bottom: 16px !important;
+    overflow: visible !important;
+  }
+
+  .mct-tabs {
+    margin: -12px 0 -18px !important;
+    padding: 12px 0 18px !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+  }
+
+  .mct-tabs-track {
+    padding: 5px 6px 18px !important;
+  }
+
+  .mct-tab {
+    box-shadow: 0 10px 22px rgba(96, 68, 58, .07) !important;
+  }
+
+  .mct-tab.is-active {
+    box-shadow: 0 14px 30px rgba(92, 62, 52, .16) !important;
+  }
+
+  /* One-position service: title truly centered vertically; variants remain untouched. */
+  .dct-service-card:not(.has-variants) .dct-service-card-body {
+    min-height: 68px !important;
+    grid-template-rows: 1fr !important;
+    align-items: center !important;
+  }
+
+  .dct-service-card:not(.has-variants) .dct-service-card-title {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    align-self: center !important;
+    margin: 0 !important;
+  }
+
+  .dct-service-card:not(.has-variants) .dct-service-card-description.is-empty {
+    display: none !important;
+  }
+
+  .dct-service-card:not(.has-variants) .dct-service-card-description.has-copy {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    align-self: center !important;
+    margin: 44px 0 0 !important;
+  }
+
+  .dct-service-card:not(.has-variants).has-description .dct-service-card-body {
+    min-height: 84px !important;
+  }
+
+  .dct-service-card:not(.has-variants).has-description .dct-service-card-title {
+    transform: translateY(-13px) !important;
+  }
+
+  .dct-service-card:not(.has-variants) .dct-service-card-meta {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    align-self: center !important;
+  }
+
+  /* Map markup is gone; keep booking/contact composition full-width and clean. */
+  .mct-visit-booking {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+@keyframes dct-enter-up {
+  from { opacity: 0; transform: translate3d(0, 22px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes dct-enter-down {
+  from { opacity: 0; transform: translate3d(0, -16px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes dct-hero-reveal {
+  from { opacity: 0; transform: translate3d(30px, 0, 0) scale(1.015); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .mct-brand-yulia-image {
+    width: 83px !important;
+    height: 71px !important;
+    flex-basis: 83px !important;
+  }
+
+  .mct-brand-yulia-image img {
+    width: 71px !important;
+    height: 71px !important;
+    max-width: 71px !important;
+    max-height: 71px !important;
+  }
+
+  .mct-price-head {
+    top: 76px !important;
+  }
+}
+
+@media (min-width: 1024px) and (prefers-reduced-motion: reduce) {
+  .mct-topbar,
+  .mct-hero-meta,
+  .mct-hero-content h1,
+  .mct-hero-copy,
+  .mct-hero-visual,
+  .mct-hero-actions,
+  .mct-stats {
+    animation: none !important;
+  }
+
+  .mct-reveal,
+  .mct-reveal.is-visible,
+  #mobile-portfolio .mct-reveal .dct-film-strip {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
