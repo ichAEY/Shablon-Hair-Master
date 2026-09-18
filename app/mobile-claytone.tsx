@@ -152,14 +152,11 @@ export default function MobileClayTone() {
       shouldShowIntro = true;
     }
 
-    if (!shouldShowIntro || reduceMotion) {
-      setIntroVisible(false);
-      return;
-    }
+    if (!shouldShowIntro || reduceMotion) return;
 
     const previousOverflow = document.body.style.overflow;
     let restored = false;
-    setIntroVisible(true);
+    const showTimer = window.setTimeout(() => setIntroVisible(true), 0);
     document.body.style.overflow = "hidden";
 
     const restoreScroll = () => {
@@ -174,6 +171,7 @@ export default function MobileClayTone() {
     }, 2300);
 
     return () => {
+      window.clearTimeout(showTimer);
       window.clearTimeout(timer);
       restoreScroll();
     };
