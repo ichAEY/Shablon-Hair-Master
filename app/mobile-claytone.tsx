@@ -1041,7 +1041,7 @@ export default function MobileClayTone() {
               const hasVariants = Boolean(service.variants?.length);
               const serviceKey = `${service.sectionKey ?? category}-${service.name}`;
               const hasDescription = Boolean(service.description);
-              const descriptionIsLong = service.description.length > 150;
+              const descriptionIsLong = service.description.length > 100;
               const descriptionExpanded = Boolean(expandedDescriptions[serviceKey]);
               return (
                 <a className={`mct-service-row yulia-price-row yulia-service-link${service.sectionLabel ? " has-group-label" : ""}${hasVariants ? " has-variants" : ""}${hasDescription ? " has-description" : ""}${descriptionExpanded ? " description-expanded" : ""}`} href={service.url} target="_blank" rel="noopener noreferrer" aria-label={`${service.name} — открыть запись в ${site.template.bookingProvider}`} key={serviceKey}>
@@ -1099,6 +1099,87 @@ export default function MobileClayTone() {
               );
             })}
           </div>
+          <div className="dct-service-groups" aria-label="Услуги по категориям на компьютере">
+            {(category === "all" ? visibleCategoryKeys : [category as CategoryKey]).map((groupKey) => {
+              const group = serviceGroups[groupKey];
+              const groupServices = category === "all" && !expanded ? group.services.slice(0, 2) : group.services;
+              if (!groupServices.length) return null;
+
+              return (
+                <section className="dct-service-category" key={`desktop-${groupKey}`}>
+                  {category === "all" && (
+                    <div className="dct-service-category-heading">
+                      <span>{group.label}</span><i aria-hidden="true" />
+                    </div>
+                  )}
+                  <div className="dct-service-category-grid">
+                    {groupServices.map((service) => {
+                      const hasVariants = Boolean(service.variants?.length);
+                      const serviceKey = `desktop-${groupKey}-${service.name}`;
+                      const hasDescription = Boolean(service.description);
+                      const descriptionIsLong = service.description.length > 100;
+                      const descriptionExpanded = Boolean(expandedDescriptions[serviceKey]);
+
+                      return (
+                        <a
+                          className={`dct-service-card${hasVariants ? " has-variants" : ""}${hasDescription ? " has-description" : ""}${descriptionExpanded ? " description-expanded" : ""}`}
+                          href={service.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${service.name} — открыть запись в ${site.template.bookingProvider}`}
+                          key={serviceKey}
+                        >
+                          <div className="dct-service-card-body">
+                            <strong className="dct-service-card-title">{service.displayName || service.name}</strong>
+                            <div className={`dct-service-card-description${hasDescription ? " has-copy" : " is-empty"}`}>
+                              {hasDescription && <p>{service.description}</p>}
+                              {descriptionIsLong && (
+                                <span
+                                  className="dct-service-description-toggle"
+                                  role="button"
+                                  tabIndex={0}
+                                  aria-expanded={descriptionExpanded}
+                                  onClick={(event) => {
+                                    event.preventDefault();
+                                    event.stopPropagation();
+                                    setExpandedDescriptions((current) => ({ ...current, [serviceKey]: !current[serviceKey] }));
+                                  }}
+                                  onKeyDown={(event) => {
+                                    if (event.key !== "Enter" && event.key !== " ") return;
+                                    event.preventDefault();
+                                    event.stopPropagation();
+                                    setExpandedDescriptions((current) => ({ ...current, [serviceKey]: !current[serviceKey] }));
+                                  }}
+                                >{descriptionExpanded ? "Свернуть" : "Подробнее"}</span>
+                              )}
+                            </div>
+                            {hasVariants ? (
+                              <div className="dct-service-card-variants">
+                                {service.variants!.map((item) => (
+                                  <div className="dct-service-card-variant" key={item.label}>
+                                    <span>{item.label}</span>
+                                    <span className="dct-service-card-variant-meta">
+                                      {item.time ? <small>{item.time}</small> : null}
+                                      <b>{item.price}</b>
+                                    </span>
+                                  </div>
+                                ))}
+                              </div>
+                            ) : (
+                              <div className="dct-service-card-meta">
+                                {service.time ? <small>{service.time}</small> : <span aria-hidden="true" />}
+                                <b>{service.price}</b>
+                              </div>
+                            )}
+                          </div>
+                        </a>
+                      );
+                    })}
+                  </div>
+                </section>
+              );
+            })}
+          </div>
           {isCollapsibleCategory && services.length > 6 && (
             <button className={`mct-more-services${expanded ? " is-open" : ""}`} type="button" aria-expanded={expanded} onClick={() => setExpanded((value) => !value)}>
               {expanded ? "Свернуть услуги" : "Открыть все услуги"}
@@ -1128,6 +1209,7 @@ export default function MobileClayTone() {
               <p className="mct-about-lead">{site.master.aboutLead}</p>
               <p>{site.master.aboutParagraphs[0]}</p>
               <p>{site.master.aboutParagraphs[1]}</p>
+              {site.master.aboutParagraphs[2] && <p className="dct-about-extra-copy">{site.master.aboutParagraphs[2]}</p>}
               <ul className="mct-about-list">{site.master.skills.map((skill) => <li key={skill}>{skill}</li>)}</ul>
               <div className="dct-about-amenities" aria-label={`Дополнительная информация о визите к ${site.master.dative}`}>
                 <div className="dct-about-amenities-head"><p className="mct-section-kicker">Дополнительно</p><span>Полезно перед записью</span></div>
