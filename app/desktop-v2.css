@@ -3628,11 +3628,33 @@
 @media (min-width: 1024px) {
   /* Move only the divider left so it sits visually between heading and categories. */
   .mct-price-head::after {
-    right: -1cm !important;
+    right: -1.3cm !important;
   }
 
   /* Pull only the service cards closer to the category row by ~1 cm. */
   .dct-service-groups {
     margin-top: -1cm !important;
+  }
+}
+
+
+/* Final category edge-shadow breathing room. */
+@media (min-width: 1024px) {
+  .mct-tabs-ribbon-wrap {
+    overflow: visible !important;
+  }
+
+  .mct-tabs {
+    width: calc(100% + 32px) !important;
+    margin-left: -16px !important;
+    margin-right: -16px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  .mct-tabs-track {
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 }
