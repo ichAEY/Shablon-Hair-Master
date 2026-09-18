@@ -1277,12 +1277,9 @@ export default function MobileClayTone() {
                 {reviews.map((review) => {
                   const reviewIsLong = review.text.length > 245;
                   return (
-                    <article
-                      className={`mct-review-card${reviewIsLong ? " is-long" : ""}`}
-                      key={`${setIndex}-${review.author}`}
-                    >
+                    <div className="mct-review-pair" key={`${setIndex}-${review.author}`}>
                       <a
-                        className="mct-review-mobile-link"
+                        className={`mct-review-card mct-review-card-mobile${reviewIsLong ? " is-long" : ""}`}
                         href={reviewsUrl}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -1300,7 +1297,8 @@ export default function MobileClayTone() {
                         <small>{review.author} · {site.template.reviewSource}</small>
                         <i>Подробнее →</i>
                       </a>
-                      <div className="dct-review-card-content">
+
+                      <article className={`mct-review-card dct-review-card${reviewIsLong ? " is-long" : ""}`}>
                         <div className="dct-review-card-head">
                           <strong>{review.author} <small>{site.template.reviewSource}</small></strong>
                           <span aria-label="5 из 5">★★★★★</span>
@@ -1320,8 +1318,8 @@ export default function MobileClayTone() {
                             }}
                           >Продолжить →</a>
                         )}
-                      </div>
-                    </article>
+                      </article>
+                    </div>
                   );
                 })}
               </div>
