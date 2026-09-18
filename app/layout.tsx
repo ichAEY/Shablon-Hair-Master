@@ -188,7 +188,7 @@ export default function RootLayout({
       <head>
         <meta
           httpEquiv="Content-Security-Policy"
-          content="frame-src 'self' https://*.yclients.com https://yclients.com;"
+          content="frame-src 'self' https://*.yclients.com https://yclients.com https://yandex.ru https://*.yandex.ru;"
         />
         <style dangerouslySetInnerHTML={{ __html: mapCleanupStyles }} />
       </head>
