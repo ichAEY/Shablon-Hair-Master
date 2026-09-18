@@ -3598,3 +3598,27 @@
     animation: none !important;
   }
 }
+
+
+/* Locked final title adjustment 2026-09-18 — only the left service heading copy. */
+@media (min-width: 1024px) {
+  .mct-price-head {
+    transform: translate(-1.5cm, -3cm) !important;
+  }
+
+  .mct-price-head h2 {
+    font-size: clamp(49.5px, 4.125vw, 63.8px) !important;
+  }
+
+  .mct-price-head > span {
+    max-width: 374px !important;
+    font-size: 14.3px !important;
+    line-height: 1.72 !important;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .mct-price-head h2 {
+    font-size: 47.3px !important;
+  }
+}
