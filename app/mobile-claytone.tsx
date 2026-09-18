@@ -1274,28 +1274,38 @@ export default function MobileClayTone() {
           <div className="mct-review-track" ref={reviewTrackRef}>
             {Array.from({ length: reviewSetCount }, (_, setIndex) => (
               <div className="mct-review-set" key={setIndex} aria-hidden={setIndex !== 2}>
-                {reviews.map((review) => (
-                  <a
-                    className={`mct-review-card${review.text.length > 240 ? " is-long" : ""}`}
-                    href={reviewsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    key={`${setIndex}-${review.author}`}
-                    tabIndex={setIndex === 2 ? 0 : -1}
-                    draggable={false}
-                    onDragStart={(event) => event.preventDefault()}
-                    onClick={(event) => {
-                      if (!reviewWasDraggedRef.current) return;
-                      event.preventDefault();
-                      reviewWasDraggedRef.current = false;
-                    }}
-                  >
-                    <span>★★★★★</span>
-                    <blockquote>«{review.text}»</blockquote>
-                    <small>{review.author} · {site.template.reviewSource}</small>
-                    <i>Подробнее →</i>
-                  </a>
-                ))}
+                {reviews.map((review) => {
+                  const reviewIsLong = review.text.length > 245;
+                  return (
+                    <article
+                      className={`mct-review-card${reviewIsLong ? " is-long" : ""}`}
+                      key={`${setIndex}-${review.author}`}
+                      onClick={() => {
+                        if (reviewWasDraggedRef.current) reviewWasDraggedRef.current = false;
+                      }}
+                    >
+                      <div className="dct-review-card-head">
+                        <strong>{review.author} <small>{site.template.reviewSource}</small></strong>
+                        <span aria-label="5 из 5">★★★★★</span>
+                      </div>
+                      <blockquote>«{review.text}»</blockquote>
+                      {reviewIsLong && (
+                        <a
+                          className="dct-review-continue"
+                          href={reviewsUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          tabIndex={setIndex === 2 ? 0 : -1}
+                          onClick={(event) => {
+                            if (!reviewWasDraggedRef.current) return;
+                            event.preventDefault();
+                            reviewWasDraggedRef.current = false;
+                          }}
+                        >Продолжить →</a>
+                      )}
+                    </article>
+                  );
+                })}
               </div>
             ))}
           </div>
